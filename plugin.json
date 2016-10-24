@@ -1,6 +1,6 @@
 {
 	"description" : "Displays CPU use for a single process",
-	"command": "truesight-meter --lua index.lua",
+	"command": "truesight-meter --lua init.lua",
 	"metrics" : ["PROCESS_CPU_PERCENTAGE"],
 	"paramArray" : { "itemTitle" : ["source"], "schemaTitle" : "Process"},
 	"paramSchema" : [
@@ -8,7 +8,7 @@
 			"title" : "Source",
 			"name" : "source",
 			"description" : "The source to display in the legend for the CPU data.",
-			"type" : "string",  
+			"type" : "string"  
 		},
 		{
 			"title" : "Process Name Regex",
