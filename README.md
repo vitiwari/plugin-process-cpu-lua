@@ -12,9 +12,8 @@ Displays CPU usage (%) for specific processes. Uses regular expressions to speci
 
 |  Runtime | node.js | Python | Java |
 |:---------|:-------:|:------:|:----:|
-| Required |    +    |        |      |
+| Required |    -    |    -   |   -  |
 
-- [How to install node.js?](https://help.boundary.com/hc/articles/202360701)
 
 ### Plugin Setup
 None
