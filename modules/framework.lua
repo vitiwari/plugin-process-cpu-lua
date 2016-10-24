@@ -1862,7 +1862,7 @@ function ProcessCpuDataSource:getProcessCpuData(port,host,params,parse)
     resultitem['metric']='PROCESS_CPU_PERCENTAGE'
     for ki,vi in pairs(V) do
             if ki=='cpuPct' then
-              resultitem['val']= vi
+              resultitem['val']= vi/100
             end
             if ki=='name' then
               resultitem['source']= vi
