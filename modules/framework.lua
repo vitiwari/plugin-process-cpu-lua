@@ -1889,5 +1889,3 @@ framework.PollerCollection = PollerCollection
 framework.ProcessCpuDataSource = ProcessCpuDataSource
 
 return framework
-
-
