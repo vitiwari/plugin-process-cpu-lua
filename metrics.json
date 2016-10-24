@@ -1,0 +1,10 @@
+{
+  "PROCESS_CPU_PERCENTAGE": {
+    "defaultAggregate": "AVG",
+    "defaultResolutionMS": 1000,
+    "description": "Process specific CPU utilization",
+    "displayName": "CPU Process",
+    "displayNameShort": "CPU Process",
+    "unit": "percent"
+  }
+}
