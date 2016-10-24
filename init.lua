@@ -12,6 +12,8 @@ local parseJson = framework.util.parseJson
 --local logger = framework.Logger
 local DataSource= framework.DataSource
 local ProcessCpuDataSource = framework.ProcessCpuDataSource
+local ipack = framework.util.ipack
+
 params.items = params.items or {}
 
 
@@ -62,16 +64,34 @@ local plugin = Plugin:new({pollInterval = 1000}, pollers)
 
 
 function plugin:onParseValues(data,extra)
-    local result = {}
+     --print("ghdfsaujv"..json.stringify(data)) 
+    --local success, parsed = parseJson(data)
+   -- if not success then
+    --    self:error('Can not parse metrics. Verify configuration parameters.')
+    --    return
+    --end
+    local measurements = {}
+    local measurement = function (...)
+        ipack(measurements, ...)
+    end
+   -- print(json.stringify(parsed))
+    --local results = parsed.results
+    --local timestamp = parsed.timestamp
+
     for K,V  in pairs(data) do
+      measurement(V.metric, V.value, V.timestamp, V.source)
+    end
+
+    return measurements
+    --for K,V  in pairs(data) do
        --print("--FFFFFFFFFFFF----> K:V::",K,json.stringify(V))
-       result['PROCESS_CPU_PERCENTAGE'] = V
+       --result['PROCESS_CPU_PERCENTAGE'] = V
        --for ki,vi in pairs(V) do
         -- print("FFFFFFFFFFFFFF  ki::vi::::",ki,vi)
       --end
-    end
+    --end
     
-    return result 
+    --return result 
 end
 
 function plugin:onError(err)
