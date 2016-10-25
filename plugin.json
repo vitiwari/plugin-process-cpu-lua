@@ -1,7 +1,7 @@
 {
 	"description" : "Displays CPU use for a single process",
-        "command": "truesight-meter --lua index.lua",
-	"command_lua": "truesight-meter --lua index.lua",
+        "command": "truesight-meter index.lua",
+	"command_lua": "truesight-meter index.lua",
 	"metrics" : ["PROCESS_CPU_PERCENTAGE"],
 	"paramSchema" : [
 		{
