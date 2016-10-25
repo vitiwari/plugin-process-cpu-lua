@@ -1,7 +1,6 @@
 {
 	"description" : "Displays CPU use for a single process",      
-	"command": "",
-	"command_lua": "boundary-meter init.lua",
+	"command" : "boundary-meter init.lua",
 	"metrics" : ["PROCESS_CPU_PERCENTAGE"],
 	"paramSchema" : [
 		{
