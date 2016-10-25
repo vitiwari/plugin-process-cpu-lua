@@ -1349,12 +1349,14 @@ end
 
 function Plugin:report(metrics)
   self:emit('report')
+  --print("Plugin report called "..json.stringify(metrics))
   self:onReport(metrics)
 end
 
 --- Called by the framework when there are some metrics to send to Boundary platform
 -- @param metrics a table that represent the metrics to send
 function Plugin:onReport(metrics)
+  -- print("metrics recieved in OnReport is ".. json.stringify(metrics))
   -- metrics can be { metric = value }
   -- or {metric = {value, source}}
   -- or {metric = {{value, source}, {value, source}, {value, source}}
@@ -1363,17 +1365,20 @@ function Plugin:onReport(metrics)
   for metric, v in pairs(metrics) do
     -- { { metric, value .. }, { metric, value .. } }
     if type(metric) == 'number' then
+    --  print(" OnReport called metric resolves to number")
       print(self:format(v.metric, v.value, notEmpty(v.source, self.source), v.timestamp))
     elseif type(v) ~= 'table' then
+      -- print(" OnReport called metric resolves to table")
       print(self:format(metric, v, self.source))
     elseif type(v[1]) ~= 'table' and v.value then
+       --print("type of v[1] is not table and there is a value looking for { metric = { value, source, timestamp }}")
       -- looking for { metric = { value, source, timestamp }}
       local source = v.source or self.source
       local value = v.value
       local timestamp = v.timestamp
       print(self:format(metric, value, source, timestamp))
     else
-      -- looking for { metric = {{ value, source, timestamp }}}
+      --print("last looking for { metric = {{ value, source, timestamp }}}")
       for _, j in pairs(v) do
         local source = j.source or self.source
         local value = j.value
